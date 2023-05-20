@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from 'framer-motion'
 import { nanoid } from 'nanoid'
 import { ComponentProps, createContext, FC, PropsWithChildren, useCallback, useState } from 'react'
 
@@ -37,13 +38,28 @@ export const ToastProvider: FC<PropsWithChildren> = ({ children }) => {
     [removeToast]
   )
 
+  const toastVariants = {
+    initial: { opacity: 0, y: -50 },
+    animate: { opacity: 1, y: 0 }
+  }
+
   return (
     <ToastContext.Provider value={{ pushToast, removeToast }}>
       {children}
       <ToastContainer>
-        {toasts.map(({ id, ...properties }, k) => (
-          <ToastElement key={k} onRemove={() => removeToast(id)} {...properties} />
-        ))}
+        <AnimatePresence>
+          {toasts.map(({ id, ...properties }) => (
+            <motion.div
+              key={id}
+              variants={toastVariants}
+              initial='initial'
+              animate='animate'
+              exit='initial'
+            >
+              <ToastElement onRemove={() => removeToast(id)} {...properties} />
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </ToastContainer>
     </ToastContext.Provider>
   )

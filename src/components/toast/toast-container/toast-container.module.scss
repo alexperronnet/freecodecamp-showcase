@@ -9,4 +9,8 @@
   max-width: 35rem;
   padding: 1rem;
   transform: translateX(-50%);
+
+  &:empty {
+    display: none;
+  }
 }
