@@ -1,0 +1,13 @@
+.footer {
+  @include m.container(xl);
+
+  padding-block: 1.5rem;
+  font-size: v.$fs-sm;
+  font-weight: v.$fw-medium;
+  text-align: center;
+  border-top: 0.125rem solid v.$c-neutral-300;
+
+  @include m.media-min(xs) {
+    font-size: v.$fs-base;
+  }
+}

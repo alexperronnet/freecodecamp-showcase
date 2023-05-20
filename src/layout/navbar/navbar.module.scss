@@ -1,0 +1,36 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1.5rem;
+  padding-inline: 1.5rem;
+  background-color: v.$c-white;
+  filter: v.$drop-shadow;
+
+  @include m.media-min(xs) {
+    padding-inline: 3rem;
+  }
+}
+
+.logo {
+  flex-shrink: 0;
+
+  svg {
+    height: 1rem;
+
+    @include m.media-min(xs) {
+      height: 1.25rem;
+    }
+  }
+
+  h1 {
+    @include m.sr-only;
+  }
+}
+
+.menu {
+  display: flex;
+  flex-shrink: 0;
+  gap: 1.25rem;
+  align-items: center;
+}

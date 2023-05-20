@@ -1,0 +1,39 @@
+@use 'sass:color';
+
+.menu-item {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  transition: color v.$transition;
+
+  &.default:hover {
+    color: v.$c-primary;
+  }
+
+  &.logout {
+    padding: 0;
+    color: v.$c-danger;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+
+    &:hover {
+      color: color.adjust(v.$c-danger, $lightness: -10%);
+    }
+  }
+
+  svg {
+    height: 1.5rem;
+    aspect-ratio: 1;
+  }
+
+  span {
+    @include m.sr-only;
+
+    @include m.media-min(xs) {
+      @include m.sr-only(reset);
+
+      font-weight: v.$fw-medium;
+    }
+  }
+}

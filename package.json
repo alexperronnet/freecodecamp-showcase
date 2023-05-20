@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "lint": "eslint --ext .ts,.tsx src/",
     "lint:fix": "pnpm lint:check --fix",
-    "stylelint": "stylelint \"src/**/*.{css,scss}\"",
+    "stylelint": "stylelint \"src/**/*.scss\"",
     "stylelint:fix": "pnpm stylelint --fix",
     "format": "prettier --check src/",
     "format:fix": "pnpm format:check --write"

@@ -5,7 +5,7 @@ import '@/styles/main.scss'
 
 import { useEffect, useState } from 'react'
 
-import { Loader } from '@/component'
+import { Loader } from '@/components'
 import { Router } from '@/router'
 import { fetchProfile, setIsAuthenticated, useAppDispatch } from '@/store'
 import { tokenStorage } from '@/utils'
