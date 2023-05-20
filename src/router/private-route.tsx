@@ -1,8 +1,10 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
 
+import { useAppSelector } from '@/store'
+
 export const PrivateRoute = () => {
   const location = useLocation()
-  const isAuthenticated = false // TODO: replace with auth state when ready
+  const { isAuthenticated } = useAppSelector(state => state.auth)
 
   // TODO: add toast message to notify user that they need to login
 

@@ -2,11 +2,12 @@ import { Navigate, RouteObject, useRoutes } from 'react-router-dom'
 
 import { Layout } from '@/layout'
 import * as Pages from '@/pages'
+import { useAppSelector } from '@/store'
 
 import { PrivateRoute } from './private-route'
 
 export const AppRoutes = () => {
-  const isAuthenticated = false // TODO: replace with auth state when ready
+  const { isAuthenticated } = useAppSelector(state => state.auth)
 
   const routes: RouteObject[] = [
     {

@@ -2,20 +2,23 @@ import { useEffect, useState } from 'react'
 
 import { Loader } from '@/component'
 import { Router } from '@/router'
+import { fetchProfile, setIsAuthenticated, useAppDispatch } from '@/store'
 import { tokenStorage } from '@/utils'
 
 export const App = () => {
   const [checkingAuth, setCheckingAuth] = useState(true)
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     const token = tokenStorage.get()
 
     if (token) {
-      // TODO: dispatch action to get user info when store is ready
+      dispatch(setIsAuthenticated())
+      dispatch(fetchProfile())
     }
 
     setCheckingAuth(false)
-  }, [])
+  }, [dispatch])
 
   return checkingAuth ? <Loader /> : <Router />
 }
