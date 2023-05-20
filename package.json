@@ -9,6 +9,8 @@
     "preview": "vite preview",
     "lint": "eslint --ext .ts,.tsx src/",
     "lint:fix": "pnpm lint:check --fix",
+    "stylelint": "stylelint \"src/**/*.{css,scss}\"",
+    "stylelint:fix": "pnpm stylelint --fix",
     "format": "prettier --check src/",
     "format:fix": "pnpm format:check --write"
   },
@@ -44,6 +46,10 @@
     "postcss": "^8.4.23",
     "prettier": "^2.8.8",
     "sass": "^1.62.1",
+    "stylelint": "^15.6.2",
+    "stylelint-config-prettier-scss": "^1.0.0",
+    "stylelint-config-recess-order": "^4.0.0",
+    "stylelint-config-standard-scss": "^9.0.0",
     "typescript": "^5.0.4",
     "vite": "^4.3.8",
     "vite-tsconfig-paths": "^4.2.0"

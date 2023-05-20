@@ -9,14 +9,14 @@ $breakpoints: (
 );
 
 @mixin container($size, $gutter: 3rem) {
-  $value: map-get($breakpoints, $size);
+  $value: map.get($breakpoints, $size);
 
   @if $value {
+    box-sizing: border-box;
     width: 100%;
     padding-inline: calc($gutter / 2);
-    box-sizing: border-box;
 
-    @media (min-width: calc(#{$value} + #{$gutter} * 2)) {
+    @media (width >= calc(#{$value} + #{$gutter} * 2)) {
       padding-inline: calc(50% - #{$value} / 2);
     }
   } @else {
@@ -25,7 +25,7 @@ $breakpoints: (
 }
 
 @mixin media-min($breakpoint) {
-  $value: map-get($breakpoints, $breakpoint);
+  $value: map.get($breakpoints, $breakpoint);
 
   @if $value {
     @media (min-width: $value) {
@@ -37,7 +37,7 @@ $breakpoints: (
 }
 
 @mixin sr-only($type: null) {
-  @if $type == null {
+  @if not $type {
     position: absolute;
     width: 1px;
     height: 1px;
