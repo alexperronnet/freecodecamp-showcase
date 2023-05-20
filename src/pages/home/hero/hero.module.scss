@@ -1,0 +1,55 @@
+.hero {
+  @include m.container(xl);
+
+  background-color: v.$c-neutral-900;
+
+  @include m.media-min(xs) {
+    display: flex;
+    justify-content: center;
+    padding-block: 5rem;
+    background: url('/images/banner-home.webp') center/cover no-repeat;
+  }
+
+  @include m.media-min(md) {
+    justify-content: flex-end;
+  }
+}
+
+.content {
+  padding-block: 4rem;
+  color: v.$c-neutral-100;
+  text-align: center;
+
+  @include m.media-min(xs) {
+    max-width: 23rem;
+    padding: 2rem;
+    color: v.$c-neutral-700;
+    text-align: left;
+    background-color: v.$c-white;
+    filter: v.$drop-shadow;
+    border-radius: v.$rounded;
+  }
+
+  h2 {
+    @include m.sr-only;
+  }
+
+  ul > li {
+    font-size: v.$fs-xl;
+    font-weight: v.$fw-bold;
+    line-height: v.$lh-relaxed;
+
+    @include m.media-min(xs) {
+      font-size: v.$fs-2xl;
+    }
+  }
+
+  p {
+    margin-block-start: 1rem;
+    line-height: v.$lh-relaxed;
+
+    @include m.media-min(xs) {
+      font-size: v.$fs-lg;
+    }
+  }
+}

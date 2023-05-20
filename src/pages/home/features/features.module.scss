@@ -1,0 +1,73 @@
+.features {
+  @include m.container(xl);
+
+  display: grid;
+  gap: 3rem;
+  padding-block: 5rem;
+
+  @include m.media-min(md) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5rem;
+  }
+
+  h2 {
+    @include m.sr-only;
+  }
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  background-color: v.$c-neutral-100;
+  border-radius: v.$rounded;
+
+  @include m.media-min(xs) {
+    align-items: center;
+    padding: 0;
+    text-align: center;
+    background-color: transparent;
+    border-radius: 0;
+  }
+
+  h3 {
+    font-size: v.$fs-lg;
+    font-weight: v.$fw-bold;
+
+    @include m.media-min(xs) {
+      font-size: v.$fs-xl;
+    }
+  }
+
+  p {
+    font-size: v.$fs-sm;
+
+    @include m.media-min(xs) {
+      font-size: v.$fs-base;
+    }
+  }
+}
+
+.icon {
+  @include m.media-min(xs) {
+    padding: 1.5rem;
+    margin-block-end: 1rem;
+    border: 0.35rem solid v.$c-primary;
+    border-radius: v.$rounded-full;
+  }
+
+  @include m.media-min(md) {
+    padding: 2rem;
+    border-width: 0.5rem;
+  }
+
+  svg {
+    height: 2rem;
+    aspect-ratio: 1;
+
+    @include m.media-min(md) {
+      height: 3rem;
+    }
+  }
+}

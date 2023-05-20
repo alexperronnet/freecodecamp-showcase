@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { nanoid } from 'nanoid'
-import { ComponentProps, createContext, FC, PropsWithChildren, useCallback, useState } from 'react'
+import { ComponentProps, createContext, PropsWithChildren, useCallback, useState } from 'react'
 
 import { ToastContainer, ToastElement } from '@/components'
 
@@ -17,7 +17,7 @@ type ToastContextType = {
 
 export const ToastContext = createContext<ToastContextType | undefined>(undefined)
 
-export const ToastProvider: FC<PropsWithChildren> = ({ children }) => {
+export const ToastProvider = ({ children }: PropsWithChildren) => {
   const [toasts, setToasts] = useState<Toast[]>([])
 
   const removeToast: ToastContextType['removeToast'] = useCallback(id => {
