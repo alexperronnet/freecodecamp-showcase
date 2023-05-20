@@ -2,15 +2,19 @@ import { useEffect, useState } from 'react'
 
 import { Loader } from '@/component'
 import { Router } from '@/router'
+import { tokenStorage } from '@/utils'
 
 export const App = () => {
   const [checkingAuth, setCheckingAuth] = useState(true)
 
   useEffect(() => {
-    // TODO: check auth state here when state management is ready
-    setTimeout(() => {
-      setCheckingAuth(false)
-    }, 1000)
+    const token = tokenStorage.get()
+
+    if (token) {
+      // TODO: dispatch action to get user info when store is ready
+    }
+
+    setCheckingAuth(false)
   }, [])
 
   return checkingAuth ? <Loader /> : <Router />
