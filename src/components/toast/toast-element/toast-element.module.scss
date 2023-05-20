@@ -1,0 +1,54 @@
+@use 'sass:color';
+
+$status: (
+  success: v.$c-primary,
+  error: v.$c-danger
+);
+
+.toast-element {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  font-size: v.$fs-sm;
+  color: v.$c-white;
+  filter: v.$drop-shadow;
+  border: 0.125rem solid transparent;
+  border-radius: v.$rounded;
+
+  @include m.media-min(xs) {
+    font-size: v.$fs-base;
+  }
+
+  @each $type, $value in $status {
+    &.#{$type} {
+      background-color: $value;
+      border-color: color.adjust($value, $lightness: -10%);
+    }
+  }
+
+  > svg {
+    flex-shrink: 0;
+    height: 1.5rem;
+    aspect-ratio: 1;
+  }
+}
+
+.close {
+  flex-shrink: 0;
+  padding: 0.25rem;
+  margin-inline-start: auto;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+
+  svg {
+    height: 1.5rem;
+    aspect-ratio: 1;
+    transition: rotate v.$transition;
+  }
+
+  &:hover svg {
+    rotate: 90deg;
+  }
+}

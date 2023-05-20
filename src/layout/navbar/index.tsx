@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { Logo } from '@/components'
+import { useToast } from '@/hooks'
 import { resetAuth, resetProfile, useAppDispatch, useAppSelector } from '@/store'
 import { tokenStorage } from '@/utils'
 
@@ -13,14 +14,17 @@ export const Navbar = () => {
   const dispatch = useAppDispatch()
   const { isAuthenticated } = useAppSelector(state => state.auth)
   const { firstName } = useAppSelector(state => state.profile.infos) || {}
+  const { pushToast } = useToast()
 
   const handleLogout = () => {
     tokenStorage.remove()
     dispatch(resetAuth())
     dispatch(resetProfile())
     navigate('/')
-
-    // TODO: add toast notification
+    pushToast({
+      message: 'You have been successfully logged out',
+      status: 'success'
+    })
   }
 
   return (

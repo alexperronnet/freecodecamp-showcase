@@ -1,0 +1,50 @@
+import { nanoid } from 'nanoid'
+import { ComponentProps, createContext, FC, PropsWithChildren, useCallback, useState } from 'react'
+
+import { ToastContainer, ToastElement } from '@/components'
+
+type ToastMessage = Pick<ComponentProps<typeof ToastElement>, 'message' | 'status'>
+
+type Toast = ToastMessage & {
+  id: string
+}
+
+type ToastContextType = {
+  pushToast: (toastMessage: ToastMessage) => void
+  removeToast: (id: string) => void
+}
+
+export const ToastContext = createContext<ToastContextType | undefined>(undefined)
+
+export const ToastProvider: FC<PropsWithChildren> = ({ children }) => {
+  const [toasts, setToasts] = useState<Toast[]>([])
+
+  const removeToast: ToastContextType['removeToast'] = useCallback(id => {
+    setToasts(toasts => toasts.filter(t => t.id !== id))
+  }, [])
+
+  const pushToast: ToastContextType['pushToast'] = useCallback(
+    toastMessage => {
+      const id = nanoid()
+
+      setToasts(toasts => {
+        const filteredToasts = toasts.filter(toast => toast.message !== toastMessage.message)
+        return [...filteredToasts, { id, ...toastMessage }]
+      })
+
+      setTimeout(() => removeToast(id), 5000)
+    },
+    [removeToast]
+  )
+
+  return (
+    <ToastContext.Provider value={{ pushToast, removeToast }}>
+      {children}
+      <ToastContainer>
+        {toasts.map(({ id, ...properties }, k) => (
+          <ToastElement key={k} onRemove={() => removeToast(id)} {...properties} />
+        ))}
+      </ToastContainer>
+    </ToastContext.Provider>
+  )
+}
