@@ -1,0 +1,19 @@
+@forward 'preflight';
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: v.$ff-sans;
+  font-weight: v.$fw-normal;
+  font-size: v.$fs-base;
+  line-height: v.$lh-base;
+  color: v.$c-neutral-700;
+  background-color: v.$c-white;
+}
+
+::selection {
+  background-color: v.$c-neutral-900;
+  color: v.$c-white;
+}

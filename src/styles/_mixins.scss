@@ -1,0 +1,62 @@
+@use 'variables' as v;
+
+$breakpoints: (
+  'xs': v.$bp-xs,
+  'sm': v.$bp-sm,
+  'md': v.$bp-md,
+  'lg': v.$bp-lg,
+  'xl': v.$bp-xl
+);
+
+@mixin container($size, $gutter: 3rem) {
+  $value: map-get($breakpoints, $size);
+
+  @if $value {
+    width: 100%;
+    padding-inline: calc($gutter / 2);
+    box-sizing: border-box;
+
+    @media (min-width: calc(#{$value} + #{$gutter} * 2)) {
+      padding-inline: calc(50% - #{$value} / 2);
+    }
+  } @else {
+    @error 'Container #{$size} does not exist.';
+  }
+}
+
+@mixin media-min($breakpoint) {
+  $value: map-get($breakpoints, $breakpoint);
+
+  @if $value {
+    @media (min-width: $value) {
+      @content;
+    }
+  } @else {
+    @error 'Breakpoint #{$breakpoint} does not exist.';
+  }
+}
+
+@mixin sr-only($type: null) {
+  @if $type == null {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  } @else if $type == reset {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  } @else {
+    @error "The only accepted argument is 'reset'.";
+  }
+}
