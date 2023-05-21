@@ -1,0 +1,38 @@
+@use 'sass:color';
+
+$colors: (
+  primary: v.$c-primary,
+  secondary: v.$c-secondary,
+  danger: v.$c-danger
+);
+
+.button {
+  padding: 0.5rem 1rem;
+  font-size: v.$fs-sm;
+  font-weight: v.$fw-medium;
+  color: v.$c-white;
+  cursor: pointer;
+  border: none;
+  border-radius: v.$rounded;
+  transition: background-color v.$transition;
+
+  @include m.media-min(xs) {
+    padding: 0.75rem 1.25rem;
+    font-size: v.$fs-base;
+  }
+
+  @each $type, $color in $colors {
+    &.#{$type} {
+      background-color: $color;
+
+      &:hover {
+        background-color: color.adjust($color, $lightness: -10%);
+      }
+    }
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
