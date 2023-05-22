@@ -12,10 +12,7 @@ commit_message="Automated deployment from $commit_hash"
 remote_name="origin"
 
 # Build the project
-if ! pnpm $build_command; then
-  echo "Build failed"
-  exit 1
-fi
+pnpm $build_command
 
 # Create deploy branch if it doesn't exist
 if ! git show-ref --verify --quiet "refs/heads/$deploy_branch"; then
