@@ -1,0 +1,9 @@
+.dashboard {
+  @include m.container(xl);
+
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  grid-gap: 5rem;
+  padding-block: 5rem;
+  background-color: v.$c-neutral-200;
+}

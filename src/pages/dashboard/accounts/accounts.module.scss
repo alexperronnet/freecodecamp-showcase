@@ -1,0 +1,53 @@
+.accounts {
+  h3 {
+    @include m.sr-only;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+  background-color: v.$c-white;
+  filter: v.$drop-shadow;
+  border-radius: v.$rounded;
+
+  @include m.media-min(sm) {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  h4,
+  p {
+    font-size: v.$fs-sm;
+
+    @include m.media-min(xs) {
+      font-size: v.$fs-base;
+    }
+  }
+
+  h5 {
+    font-size: v.$fs-2xl;
+    font-weight: v.$fw-bold;
+
+    @include m.media-min(xs) {
+      font-size: v.$fs-3xl;
+    }
+  }
+}
