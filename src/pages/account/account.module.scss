@@ -1,0 +1,74 @@
+.account {
+  @include m.container(xs);
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-block: 5rem;
+
+  @include m.media-min(xs) {
+    justify-content: center;
+    background-color: v.$c-neutral-200;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  @include m.media-min(xs) {
+    padding: 3rem;
+    background-color: v.$c-white;
+    filter: v.$drop-shadow;
+    border-radius: v.$rounded;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  h2 {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-size: v.$fs-xl;
+    font-weight: v.$fw-bold;
+
+    &::after {
+      flex-grow: 1;
+      height: 0.125rem;
+      content: '';
+      background-color: v.$c-neutral-200;
+    }
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.infos {
+  font-size: v.$fs-xs;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: space-between;
+
+  li {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+
+    h3 {
+      font-weight: v.$fw-bold;
+    }
+  }
+}
