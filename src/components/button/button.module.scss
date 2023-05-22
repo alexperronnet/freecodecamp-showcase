@@ -7,7 +7,7 @@ $colors: (
 );
 
 .button {
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.25rem;
   font-size: v.$fs-sm;
   font-weight: v.$fw-medium;
   color: v.$c-white;
@@ -17,7 +17,6 @@ $colors: (
   transition: background-color v.$transition;
 
   @include m.media-min(xs) {
-    padding: 0.75rem 1.25rem;
     font-size: v.$fs-base;
   }
 

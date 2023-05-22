@@ -1,0 +1,65 @@
+@use 'sass:color';
+
+.auth {
+  @include m.container(xs);
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-block: 5rem;
+
+  @include m.media-min(xs) {
+    justify-content: center;
+    background-color: v.$c-neutral-200;
+  }
+}
+
+.toggle-mode {
+  padding: 0;
+  margin: 0;
+  margin-inline-start: 0.25rem;
+  font-weight: v.$fw-bold;
+  text-decoration: underline;
+  text-decoration-thickness: 0.125rem;
+  text-underline-offset: 0.25rem;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  transition: color v.$transition;
+
+  &:hover {
+    color: color.adjust(v.$c-secondary, $lightness: -10%);
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @include m.media-min(xs) {
+    padding: 2rem;
+    background-color: v.$c-white;
+    filter: v.$drop-shadow;
+    border-radius: v.$rounded;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+
+  svg {
+    flex-shrink: 0;
+    height: 2rem;
+    aspect-ratio: 1;
+  }
+
+  h2 {
+    font-size: v.$fs-xl;
+    font-weight: v.$fw-bold;
+    text-transform: uppercase;
+  }
+}

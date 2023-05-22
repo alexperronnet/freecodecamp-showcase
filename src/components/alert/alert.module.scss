@@ -1,0 +1,28 @@
+$colors: (
+  info: v.$c-secondary,
+  danger: v.$c-danger
+);
+
+.alert {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  font-size: v.$fs-sm;
+  font-weight: v.$fw-medium;
+  border-radius: v.$rounded;
+
+  @each $type, $color in $colors {
+    &.#{$type} {
+      color: $color;
+      background-color: rgba($color, 0.1);
+      border: 0.125rem solid rgba($color, 0.2);
+    }
+  }
+
+  svg {
+    flex-shrink: 0;
+    height: 1.5rem;
+    aspect-ratio: 1;
+  }
+}

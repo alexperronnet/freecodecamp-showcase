@@ -1,0 +1,7 @@
+.home {
+  @include m.media-min(xs) {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    place-items: center;
+  }
+}
