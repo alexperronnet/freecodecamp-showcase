@@ -1,47 +1,42 @@
 #!/bin/bash
-set -e
-set -o pipefail
 
 # Default values
 build_command="build"
 build_dir="dist"
-default_branch="main"
 deploy_branch="deploy"
-commit_hash=$(git rev-parse --short HEAD)
-commit_message="Automated deployment from $commit_hash"
-remote_name="origin"
+remote_url="git@github.com:alexperronnet/openclassrooms-p13-argent-bank.git"
+commit_message="Automatic build commit"
 
 # Build the project
-pnpm $build_command
+pnpm run $build_command
 
-# Create deploy branch if it doesn't exist
-if ! git show-ref --verify --quiet "refs/heads/$deploy_branch"; then
-  git branch $deploy_branch
+# Navigate to the build directory
+cd $build_dir
+
+# Initialize a new git repository if doesn't exist
+if [ ! -d ".git" ]; then
+    git init
 fi
 
-# Checkout the deploy branch
-git checkout $deploy_branch
+# Check if branch exists
+if ! git rev-parse --verify $deploy_branch > /dev/null 2>&1; then
+    git checkout --orphan $deploy_branch
+    git rm -rf .
+else
+    git checkout $deploy_branch
+fi
 
-# Remove all files not in .git or in the build directory
-find . -maxdepth 1 ! -name '.git' ! -name ".gitignore" ! -name "$build_dir" ! -name '.' -exec rm -rf {} \;
+# Add all files
+git add -A
 
-# Copy the build files to the root directory
-cp -r $build_dir/* .
-
-# Add all files to git
-git add .
-
-# Remove files that were deleted during the build
-git add -u
-
-# Commit the changes
+# Commit changes
 git commit -m "$commit_message"
 
-# Push the changes to the remote
-git push $remote_name $deploy_branch
+# Push to the remote branch
+git push -f $remote_url $deploy_branch
 
-# Checkout the previous branch
-git checkout -
+# Navigate back to the project root
+cd -
 
-# Delete build directory
+# Delete the build directory
 rm -rf $build_dir
