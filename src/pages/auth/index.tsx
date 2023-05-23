@@ -3,7 +3,7 @@ import { ComponentProps, useEffect, useState } from 'react'
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 
 import { Alert, Icon } from '@/components'
-import { useToast } from '@/hooks'
+import { useSeo, useToast } from '@/hooks'
 import { loginUser, registerUser, resetAuth, useAppDispatch, useAppSelector } from '@/store'
 
 import styles from './auth.module.scss'
@@ -18,6 +18,8 @@ export const Auth = () => {
   const [searchParameters, setSearchParameters] = useSearchParams()
   const [mode, setMode] = useState<Mode>((searchParameters.get('mode') as Mode) || 'login')
   const [from] = useState<string>((location.state as { from: string })?.from || '/dashboard')
+
+  useSeo({ page: mode === 'login' ? 'Login' : 'Register' })
 
   const dispatch = useAppDispatch()
   const { isAuthenticated, error } = useAppSelector(state => state.auth)

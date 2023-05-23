@@ -1,7 +1,7 @@
 import { RegisterOptions, useForm } from 'react-hook-form'
 
 import { Alert, Button, Field } from '@/components'
-import { useToast } from '@/hooks'
+import { useSeo, useToast } from '@/hooks'
 import { updateProfile, useAppDispatch, useAppSelector } from '@/store'
 import { formatString, regexValidation } from '@/utils'
 
@@ -18,6 +18,8 @@ const defaultValues: FormValues = {
 }
 
 export const Account = () => {
+  useSeo({ page: 'Account' })
+
   const dispatch = useAppDispatch()
   const { firstName, lastName, id, createdAt, updatedAt, email } =
     useAppSelector(state => state.profile.infos) || {}
