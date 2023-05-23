@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 $colors: (
   info: v.$c-secondary,
   danger: v.$c-danger
@@ -14,7 +16,7 @@ $colors: (
 
   @each $type, $color in $colors {
     &.#{$type} {
-      color: $color;
+      color: color.adjust($color, $lightness: -10%);
       background-color: rgba($color, 0.1);
       border: 0.125rem solid rgba($color, 0.2);
     }
