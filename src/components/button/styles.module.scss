@@ -20,18 +20,18 @@ $colors: (
     font-size: v.$fs-base;
   }
 
-  @each $type, $color in $colors {
-    &.#{$type} {
-      background-color: $color;
-
-      &:hover {
-        background-color: color.adjust($color, $lightness: -10%);
-      }
-    }
-  }
-
   &:disabled {
     cursor: not-allowed;
     opacity: 0.5;
+  }
+}
+
+@each $type, $color in $colors {
+  .#{$type} {
+    background-color: $color;
+
+    &:hover {
+      background-color: color.adjust($color, $lightness: -10%);
+    }
   }
 }

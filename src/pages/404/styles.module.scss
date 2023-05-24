@@ -9,21 +9,21 @@
   padding-block: 5rem;
   text-align: center;
   background-color: v.$c-neutral-200;
+}
 
-  h2 {
-    font-size: v.$fs-4xl;
-    font-weight: v.$fw-bold;
+.title {
+  font-size: v.$fs-4xl;
+  font-weight: v.$fw-bold;
 
-    @include m.media-min(xs) {
-      font-size: v.$fs-6xl;
-    }
+  @include m.media-min(xs) {
+    font-size: v.$fs-6xl;
   }
+}
 
-  p {
-    margin-block-end: 2rem;
+.text {
+  margin-block-end: 2rem;
 
-    @include m.media-min(xs) {
-      font-size: v.$fs-xl;
-    }
+  @include m.media-min(xs) {
+    font-size: v.$fs-xl;
   }
 }

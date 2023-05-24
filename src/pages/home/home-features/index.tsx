@@ -2,7 +2,7 @@ import { ComponentProps } from 'react'
 
 import { Icon } from '@/components'
 
-import styles from './features.module.scss'
+import styles from './styles.module.scss'
 
 type Feature = {
   icon: ComponentProps<typeof Icon>['name']
@@ -25,21 +25,20 @@ const features: Feature[] = [
   {
     icon: 'shieldCheck',
     title: 'Security you can trust',
-    description:
-      'We use top of the line encryption to make sure your data and money is always safe.'
+    description: 'We use top of the line encryption to make sure your data and money is always safe.'
   }
 ]
 
-export const Features = () => (
+export const HomeFeatures = () => (
   <section className={styles.features}>
-    <h2>Features</h2>
+    <h2 className={styles.title}>Features</h2>
     {features.map(({ icon, title, description }, k) => (
       <div key={k} className={styles.feature}>
-        <div className={styles.icon}>
-          <Icon name={icon} />
+        <div className={styles['icon-wrapper']}>
+          <Icon name={icon} className={styles.icon} />
         </div>
-        <h3>{title}</h3>
-        <p>{description}</p>
+        <h3 className={styles['feature-title']}>{title}</h3>
+        <p className={styles.description}>{description}</p>
       </div>
     ))}
   </section>

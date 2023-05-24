@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 
 import { Icon } from '@/components'
 
-import styles from './menu-item.module.scss'
+import styles from './styles.module.scss'
 
 const cn = classNames.bind(styles)
 
@@ -19,8 +19,8 @@ type MenuItemProperties = {
 export const MenuItem = ({ icon, label, type = 'default', to, onClick }: MenuItemProperties) => {
   const menuItemContent = (
     <Fragment>
-      <Icon name={icon} />
-      <span>{label}</span>
+      <Icon name={icon} className={styles.icon} />
+      <span className={styles.label}>{label}</span>
     </Fragment>
   )
 

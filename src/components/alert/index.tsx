@@ -3,7 +3,7 @@ import { ComponentProps, PropsWithChildren } from 'react'
 
 import { Icon } from '@/components'
 
-import styles from './alert.module.scss'
+import styles from './styles.module.scss'
 
 type AlertProperties = PropsWithChildren & {
   icon?: ComponentProps<typeof Icon>['name']
@@ -14,7 +14,7 @@ const cn = classNames.bind(styles)
 
 export const Alert = ({ icon, variant = 'info', children }: AlertProperties) => (
   <div className={cn('alert', variant)}>
-    {icon && <Icon name={icon} />}
+    {icon && <Icon name={icon} className={styles.icon} />}
     {children}
   </div>
 )

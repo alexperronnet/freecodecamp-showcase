@@ -19,19 +19,25 @@ $status: (
   @include m.media-min(xs) {
     font-size: v.$fs-base;
   }
+}
 
-  @each $type, $value in $status {
-    &.#{$type} {
-      background-color: $value;
-      border-color: color.adjust($value, $lightness: -10%);
-    }
+@each $type, $value in $status {
+  .#{$type} {
+    background-color: $value;
+    border-color: color.adjust($value, $lightness: -10%);
   }
+}
 
-  > svg {
-    flex-shrink: 0;
-    height: 1.5rem;
-    aspect-ratio: 1;
-  }
+.icon {
+  flex-shrink: 0;
+  height: 1.5rem;
+  aspect-ratio: 1;
+}
+
+.close-icon {
+  height: 1.5rem;
+  aspect-ratio: 1;
+  transition: rotate v.$transition;
 }
 
 .close {
@@ -42,13 +48,11 @@ $status: (
   background-color: transparent;
   border: none;
 
-  svg {
-    height: 1.5rem;
-    aspect-ratio: 1;
-    transition: rotate v.$transition;
-  }
-
-  &:hover svg {
+  &:hover .close-icon {
     rotate: 90deg;
   }
+}
+
+.close-label {
+  @include m.sr-only;
 }

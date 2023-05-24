@@ -2,14 +2,16 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { ComponentProps, useEffect, useState } from 'react'
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 
-import { Alert, Icon } from '@/components'
+import { Alert } from '@/components'
 import { useSeo, useToast } from '@/hooks'
 import { loginUser, registerUser, resetAuth, useAppDispatch, useAppSelector } from '@/store'
+import { formatString } from '@/utils'
 
-import styles from './auth.module.scss'
-import { Form, FormValues } from './form'
+import { AuthForm, AuthFormValues } from './auth-form'
+import { AuthHeader } from './auth-header'
+import styles from './styles.module.scss'
 
-type Mode = ComponentProps<typeof Form>['mode']
+type Mode = ComponentProps<typeof AuthForm>['mode']
 
 export const Auth = () => {
   const navigate = useNavigate()
@@ -53,13 +55,16 @@ export const Auth = () => {
     dispatch(resetAuth())
   }
 
-  const onSubmit = (data: FormValues) => {
+  const onSubmit = (data: AuthFormValues) => {
     const { firstName, lastName, email, password, persist } = data
+
+    const newFirstName = formatString.name(firstName)
+    const newLastName = formatString.name(lastName)
 
     if (mode === 'login') {
       dispatch(loginUser({ email, password, persist }))
     } else {
-      dispatch(registerUser({ firstName, lastName, email, password, persist }))
+      dispatch(registerUser({ firstName: newFirstName, lastName: newLastName, email, password, persist }))
     }
   }
 
@@ -80,11 +85,8 @@ export const Auth = () => {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 50 }}
         >
-          <header className={styles.header}>
-            <Icon name={mode === 'login' ? 'user' : 'userAdd'} />
-            <h2>{mode === 'login' ? 'Sign In' : 'Sign Up'}</h2>
-          </header>
-          <Form mode={mode} onSubmit={onSubmit} />
+          <AuthHeader mode={mode} />
+          <AuthForm mode={mode} onSubmit={onSubmit} />
         </motion.section>
       </AnimatePresence>
     </main>

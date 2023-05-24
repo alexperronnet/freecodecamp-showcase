@@ -3,7 +3,7 @@ import { forwardRef, InputHTMLAttributes, useState } from 'react'
 
 import { Icon } from '@/components'
 
-import styles from './field.module.scss'
+import styles from './styles.module.scss'
 
 type FieldProperties = InputHTMLAttributes<HTMLInputElement> & {
   label: string
@@ -11,7 +11,7 @@ type FieldProperties = InputHTMLAttributes<HTMLInputElement> & {
   error?: string
 }
 
-const cx = classNames.bind(styles)
+const cn = classNames.bind(styles)
 
 export const Field = forwardRef<HTMLInputElement, FieldProperties>(
   ({ label, type, error, ...properties }, reference) => {
@@ -22,19 +22,19 @@ export const Field = forwardRef<HTMLInputElement, FieldProperties>(
     const inputType = type === 'password' && isPasswordVisible ? 'text' : type
 
     return (
-      <label className={cx('field', error && 'field-error')}>
+      <label className={cn('field', error && 'field-error')}>
         <span className={styles.label}>{label}</span>
         <div className={styles['input-container']}>
-          <input ref={reference} type={inputType} {...properties} />
+          <input ref={reference} type={inputType} className={styles.input} {...properties} />
           {type === 'password' && (
             <button
               type='button'
               onClick={togglePasswordVisibility}
               aria-label={isPasswordVisible ? 'Hide password' : 'Show password'}
-              className={styles['toggle-password-visibility']}
+              className={styles['toggle-password']}
             >
-              <Icon name={isPasswordVisible ? 'eye' : 'eyeClose'} />
-              <span>{isPasswordVisible ? 'Hide' : 'Show'}</span>
+              <Icon name={isPasswordVisible ? 'eye' : 'eyeClose'} className={styles['toggle-password-icon']} />
+              <span className={styles['toggle-password-label']}>{isPasswordVisible ? 'Hide' : 'Show'}</span>
             </button>
           )}
         </div>

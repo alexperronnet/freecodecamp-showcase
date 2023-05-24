@@ -9,10 +9,10 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 5rem;
   }
+}
 
-  h2 {
-    @include m.sr-only;
-  }
+.title {
+  @include m.sr-only;
 }
 
 .feature {
@@ -31,7 +31,7 @@
     border-radius: 0;
   }
 
-  h3 {
+  .feature-title {
     font-size: v.$fs-lg;
     font-weight: v.$fw-bold;
 
@@ -40,7 +40,7 @@
     }
   }
 
-  p {
+  .description {
     font-size: v.$fs-sm;
 
     @include m.media-min(xs) {
@@ -49,7 +49,7 @@
   }
 }
 
-.icon {
+.icon-wrapper {
   @include m.media-min(xs) {
     padding: 1.5rem;
     margin-block-end: 1rem;
@@ -61,13 +61,13 @@
     padding: 2rem;
     border-width: 0.5rem;
   }
+}
 
-  svg {
-    height: 2rem;
-    aspect-ratio: 1;
+.icon {
+  height: 2rem;
+  aspect-ratio: 1;
 
-    @include m.media-min(md) {
-      height: 3rem;
-    }
+  @include m.media-min(md) {
+    height: 3rem;
   }
 }

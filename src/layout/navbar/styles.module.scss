@@ -12,20 +12,20 @@
   }
 }
 
-.logo {
+.logo-wrapper {
   flex-shrink: 0;
+}
 
-  svg {
-    height: 1rem;
+.logo {
+  height: 1rem;
 
-    @include m.media-min(xs) {
-      height: 1.25rem;
-    }
+  @include m.media-min(xs) {
+    height: 1.25rem;
   }
+}
 
-  h1 {
-    @include m.sr-only;
-  }
+.title {
+  @include m.sr-only;
 }
 
 .menu {

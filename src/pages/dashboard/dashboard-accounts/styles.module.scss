@@ -1,7 +1,5 @@
-.accounts {
-  h3 {
-    @include m.sr-only;
-  }
+.title {
+  @include m.sr-only;
 }
 
 .list {
@@ -32,22 +30,22 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
 
-  h4,
-  p {
-    font-size: v.$fs-sm;
+.detail-title,
+.description {
+  font-size: v.$fs-sm;
 
-    @include m.media-min(xs) {
-      font-size: v.$fs-base;
-    }
+  @include m.media-min(xs) {
+    font-size: v.$fs-base;
   }
+}
 
-  h5 {
-    font-size: v.$fs-2xl;
-    font-weight: v.$fw-bold;
+.amount {
+  font-size: v.$fs-2xl;
+  font-weight: v.$fw-bold;
 
-    @include m.media-min(xs) {
-      font-size: v.$fs-3xl;
-    }
+  @include m.media-min(xs) {
+    font-size: v.$fs-3xl;
   }
 }

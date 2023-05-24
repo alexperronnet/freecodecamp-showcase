@@ -19,16 +19,15 @@ export const fetchProfile = createAsyncThunk<ProfileResponse, void, { rejectValu
   }
 )
 
-export const updateProfile = createAsyncThunk<
-  ProfileResponse,
-  UpdateProfilePayload,
-  { rejectValue: string }
->('profile/updateProfile', async (payload, { rejectWithValue }) => {
-  try {
-    const { data } = await apiInstance.put<ProfileResponse>(PROFILE_ENDPOINT, payload)
-    return data
-  } catch (error) {
-    const errorMessage = apiErrorMessage(error)
-    return rejectWithValue(errorMessage)
+export const updateProfile = createAsyncThunk<ProfileResponse, UpdateProfilePayload, { rejectValue: string }>(
+  'profile/updateProfile',
+  async (payload, { rejectWithValue }) => {
+    try {
+      const { data } = await apiInstance.put<ProfileResponse>(PROFILE_ENDPOINT, payload)
+      return data
+    } catch (error) {
+      const errorMessage = apiErrorMessage(error)
+      return rejectWithValue(errorMessage)
+    }
   }
-})
+)

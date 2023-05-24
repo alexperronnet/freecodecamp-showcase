@@ -1,0 +1,20 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.title {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: v.$fs-xl;
+  font-weight: v.$fw-bold;
+}
+
+.title::after {
+  flex-grow: 1;
+  height: 0.125rem;
+  content: '';
+  background-color: v.$c-neutral-200;
+}

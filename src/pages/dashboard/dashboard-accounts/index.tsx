@@ -1,7 +1,7 @@
 import { Button } from '@/components'
 import { currencyFormatter } from '@/utils'
 
-import styles from './accounts.module.scss'
+import styles from './styles.module.scss'
 
 type Account = {
   number: number
@@ -31,18 +31,18 @@ const accounts: Account[] = [
   }
 ]
 
-export const Accounts = () => (
+export const DashboardAccounts = () => (
   <section className={styles.accounts}>
-    <h3>Accounts</h3>
+    <h3 className={styles.title}>Accounts</h3>
     <ul className={styles.list}>
       {accounts.map(({ number, type, amount, description }, k) => (
         <li key={k} className={styles.item}>
           <div className={styles.details}>
-            <h4>
+            <h4 className={styles['details-title']}>
               Argent Bank {type} (x{number})
             </h4>
-            <h5>{currencyFormatter(amount)}</h5>
-            <p>{description}</p>
+            <h5 className={styles.amount}>{currencyFormatter(amount)}</h5>
+            <p className={styles.description}>{description}</p>
           </div>
           <Button variant='secondary' disabled>
             View transactions

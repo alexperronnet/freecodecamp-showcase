@@ -1,16 +1,16 @@
 import { useSeo } from '@/hooks'
 
-import { Features } from './features'
-import { Hero } from './hero'
-import styles from './home.module.scss'
+import { HomeFeatures } from './home-features'
+import { HomeHero } from './home-hero'
+import styles from './styles.module.scss'
 
 export const Home = () => {
   useSeo({ page: 'Home' })
 
   return (
     <main className={styles.home}>
-      <Hero />
-      <Features />
+      <HomeHero />
+      <HomeFeatures />
     </main>
   )
 }

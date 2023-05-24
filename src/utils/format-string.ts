@@ -7,10 +7,9 @@ export const formatString = {
     const year = dateObject.getFullYear()
     const month = dateObject.getMonth() + 1
     const day = dateObject.getDate()
-    const hours = dateObject.getHours()
-    const minutes = dateObject.getMinutes()
-    const seconds = dateObject.getSeconds()
+    const hours = dateObject.getHours().toString().padStart(2, '0')
+    const minutes = dateObject.getMinutes().toString().padStart(2, '0')
 
-    return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}`
+    return `${month}/${day}/${year} ${hours}:${minutes}`
   }
 }

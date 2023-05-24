@@ -15,6 +15,11 @@ type ToastContextType = {
   removeToast: (id: string) => void
 }
 
+const toastVariants = {
+  initial: { opacity: 0, y: -50 },
+  animate: { opacity: 1, y: 0 }
+}
+
 export const ToastContext = createContext<ToastContextType | undefined>(undefined)
 
 export const ToastProvider = ({ children }: PropsWithChildren) => {
@@ -38,24 +43,13 @@ export const ToastProvider = ({ children }: PropsWithChildren) => {
     [removeToast]
   )
 
-  const toastVariants = {
-    initial: { opacity: 0, y: -50 },
-    animate: { opacity: 1, y: 0 }
-  }
-
   return (
     <ToastContext.Provider value={{ pushToast, removeToast }}>
       {children}
       <ToastContainer>
         <AnimatePresence>
           {toasts.map(({ id, ...properties }) => (
-            <motion.div
-              key={id}
-              variants={toastVariants}
-              initial='initial'
-              animate='animate'
-              exit='initial'
-            >
+            <motion.div key={id} variants={toastVariants} initial='initial' animate='animate' exit='initial'>
               <ToastElement onRemove={() => removeToast(id)} {...properties} />
             </motion.div>
           ))}

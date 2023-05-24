@@ -1,0 +1,37 @@
+@use 'sass:color';
+
+.checkbox {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-weight: v.$fw-medium;
+  cursor: pointer;
+}
+
+.input {
+  display: grid;
+  place-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  cursor: pointer;
+  background-color: v.$c-neutral-100;
+  border: 0.125rem solid v.$c-neutral-200;
+  border-radius: v.$rounded;
+  appearance: none;
+
+  &:checked {
+    background-color: v.$c-secondary;
+    border-color: color.adjust(v.$c-secondary, $lightness: -10%);
+
+    &::after {
+      color: v.$c-neutral-100;
+      content: '\2713';
+    }
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}

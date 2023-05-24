@@ -1,0 +1,32 @@
+.account {
+  @include m.container(xs);
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-block: 5rem;
+
+  @include m.media-min(xs) {
+    justify-content: center;
+    background-color: v.$c-neutral-200;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  @include m.media-min(xs) {
+    padding: 3rem;
+    background-color: v.$c-white;
+    filter: v.$drop-shadow;
+    border-radius: v.$rounded;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

@@ -1,16 +1,16 @@
 import { useSeo } from '@/hooks'
 
-import { Accounts } from './accounts'
-import styles from './dashboard.module.scss'
-import { Hero } from './hero'
+import { DashboardAccounts } from './dashboard-accounts'
+import { DashboardHero } from './dashboard-hero'
+import styles from './styles.module.scss'
 
 export const Dashboard = () => {
   useSeo({ page: 'Dashboard' })
 
   return (
     <main className={styles.dashboard}>
-      <Hero />
-      <Accounts />
+      <DashboardHero />
+      <DashboardAccounts />
     </main>
   )
 }

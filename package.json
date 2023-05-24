@@ -9,11 +9,11 @@
     "preview": "vite preview",
     "deploy": "bash ./bin/deploy.sh",
     "lint": "eslint --ext .ts,.tsx src/",
-    "lint:fix": "pnpm lint:check --fix",
+    "lint:fix": "pnpm run lint --fix",
     "stylelint": "stylelint \"src/**/*.scss\"",
     "stylelint:fix": "pnpm stylelint --fix",
     "format": "prettier --check src/",
-    "format:fix": "pnpm format:check --write"
+    "format:fix": "pnpm format --write"
   },
   "dependencies": {
     "@fontsource/inter": "^4.5.15",

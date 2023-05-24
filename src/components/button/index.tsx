@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind'
 import { ButtonHTMLAttributes } from 'react'
 
-import styles from './button.module.scss'
+import styles from './styles.module.scss'
 
 type ButtonProperties = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: 'primary' | 'secondary' | 'danger'

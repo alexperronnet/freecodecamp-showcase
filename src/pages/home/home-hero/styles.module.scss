@@ -29,27 +29,27 @@
     filter: v.$drop-shadow;
     border-radius: v.$rounded;
   }
+}
 
-  h2 {
-    @include m.sr-only;
+.title {
+  @include m.sr-only;
+}
+
+.item {
+  font-size: v.$fs-xl;
+  font-weight: v.$fw-bold;
+  line-height: v.$lh-relaxed;
+
+  @include m.media-min(xs) {
+    font-size: v.$fs-2xl;
   }
+}
 
-  ul > li {
-    font-size: v.$fs-xl;
-    font-weight: v.$fw-bold;
-    line-height: v.$lh-relaxed;
+.text {
+  margin-block-start: 1rem;
+  line-height: v.$lh-relaxed;
 
-    @include m.media-min(xs) {
-      font-size: v.$fs-2xl;
-    }
-  }
-
-  p {
-    margin-block-start: 1rem;
-    line-height: v.$lh-relaxed;
-
-    @include m.media-min(xs) {
-      font-size: v.$fs-lg;
-    }
+  @include m.media-min(xs) {
+    font-size: v.$fs-lg;
   }
 }

@@ -6,9 +6,9 @@ import { regexValidation } from '@/utils'
 
 import styles from './form.module.scss'
 
-export type Mode = 'login' | 'register'
+type Mode = 'login' | 'register'
 
-export type FormValues = {
+export type AuthFormValues = {
   firstName: string
   lastName: string
   email: string
@@ -17,7 +17,7 @@ export type FormValues = {
   persist: boolean
 }
 
-const defaultValues: FormValues = {
+const defaultValues: AuthFormValues = {
   firstName: '',
   lastName: '',
   email: '',
@@ -28,11 +28,11 @@ const defaultValues: FormValues = {
 
 type FormProperties = {
   mode: Mode
-  onSubmit: (data: FormValues) => void
+  onSubmit: (data: AuthFormValues) => void
 }
 
-export const Form = ({ mode, onSubmit }: FormProperties) => {
-  const { register, handleSubmit, watch, reset, formState } = useForm<FormValues>({
+export const AuthForm = ({ mode, onSubmit }: FormProperties) => {
+  const { register, handleSubmit, watch, reset, formState } = useForm<AuthFormValues>({
     defaultValues,
     mode: 'onTouched'
   })
@@ -82,7 +82,7 @@ export const Form = ({ mode, onSubmit }: FormProperties) => {
     })
   }
 
-  const renderField = (type: string, name: keyof FormValues, validation: RegisterOptions) => (
+  const renderField = (type: string, name: keyof AuthFormValues, validation: RegisterOptions) => (
     <Field
       type={type as 'text' | 'email' | 'password'}
       label={name.split(/(?=[A-Z])/).join(' ')}
@@ -102,8 +102,7 @@ export const Form = ({ mode, onSubmit }: FormProperties) => {
       )}
       {renderField('email', 'email', validationRules.email)}
       {renderField('password', 'password', validationRules.password(isRegistering))}
-      {isRegistering &&
-        renderField('password', 'confirmPassword', validationRules.confirmPassword())}
+      {isRegistering && renderField('password', 'confirmPassword', validationRules.confirmPassword())}
       <Checkbox
         label={isRegistering ? 'Stay logged in after registration' : 'Remember Me'}
         {...register('persist')}

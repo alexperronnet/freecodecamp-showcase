@@ -7,7 +7,7 @@ import { resetAuth, resetProfile, useAppDispatch, useAppSelector } from '@/store
 import { tokenStorage } from '@/utils'
 
 import { MenuItem } from './menu-item'
-import styles from './navbar.module.scss'
+import styles from './styles.module.scss'
 
 export const Navbar = () => {
   const navigate = useNavigate()
@@ -29,9 +29,9 @@ export const Navbar = () => {
 
   return (
     <nav className={styles.nav}>
-      <Link to='/' className={styles.logo}>
-        <Logo />
-        <h1>Argent Bank</h1>
+      <Link to='/' className={styles['logo-wrapper']}>
+        <Logo className={styles.logo} />
+        <h1 className={styles.title}>Argent Bank</h1>
       </Link>
       <ul className={styles.menu}>
         {isAuthenticated ? (

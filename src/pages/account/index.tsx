@@ -1,58 +1,53 @@
 import { RegisterOptions, useForm } from 'react-hook-form'
 
-import { Alert, Button, Field } from '@/components'
+import { Button, Field } from '@/components'
 import { useSeo, useToast } from '@/hooks'
 import { updateProfile, useAppDispatch, useAppSelector } from '@/store'
 import { formatString, regexValidation } from '@/utils'
 
-import styles from './account.module.scss'
+import { AccountInfos } from './account-infos'
+import { AccountSection } from './account-section'
+import styles from './styles.module.scss'
 
 type FormValues = {
-  firstName: string
-  lastName: string
+  newFirstName: string
+  newLastName: string
 }
 
-const defaultValues: FormValues = {
-  firstName: '',
-  lastName: ''
+const defaultValues = {
+  newFirstName: '',
+  newLastName: ''
 }
 
 export const Account = () => {
   useSeo({ page: 'Account' })
 
-  const dispatch = useAppDispatch()
-  const { firstName, lastName, id, createdAt, updatedAt, email } =
-    useAppSelector(state => state.profile.infos) || {}
   const { pushToast } = useToast()
 
-  const { register, handleSubmit, formState, reset } = useForm<FormValues>({
-    mode: 'onTouched',
-    defaultValues
-  })
+  const dispatch = useAppDispatch()
+  const { firstName = '', lastName = '', email = '' } = useAppSelector(state => state.profile.infos) || {}
+
+  const { register, handleSubmit, formState, reset } = useForm<FormValues>({ mode: 'onTouched', defaultValues })
 
   const { errors, isSubmitting } = formState
 
   const onSubmit = (data: FormValues) => {
-    const { firstName: firstNameInput, lastName: lastNameInput } = data
+    const { newFirstName, newLastName } = data
 
-    const formattedFirstName = formatString.name(firstNameInput)
-    const formattedLastName = formatString.name(lastNameInput)
+    const formattedNewFirstName = formatString.name(newFirstName)
+    const formattedNewLastName = formatString.name(newLastName)
 
-    const emptyFields = !formattedFirstName && !formattedLastName
-    const noChangesInFields =
-      (firstName === formattedFirstName && lastName === formattedLastName) ||
-      (formattedFirstName && !formattedLastName && firstName === formattedFirstName) ||
-      (!formattedFirstName && formattedLastName && lastName === formattedLastName)
+    const isFirstNameUnchanged = !formattedNewFirstName || formattedNewFirstName === firstName
+    const isLastNameUnchanged = !formattedNewLastName || formattedNewLastName === lastName
 
-    if (emptyFields) {
-      return pushToast({ status: 'error', message: 'Nothing to update!' })
+    if (isFirstNameUnchanged && isLastNameUnchanged) {
+      return pushToast({ status: 'error', message: 'No changes were made!' })
     }
 
-    if (noChangesInFields) {
-      return pushToast({ status: 'error', message: 'We have not detected any changes!' })
-    }
+    const updatedFirstName = isFirstNameUnchanged ? firstName : formattedNewFirstName
+    const updatedLastName = isLastNameUnchanged ? lastName : formattedNewLastName
 
-    dispatch(updateProfile({ firstName: formattedFirstName, lastName: formattedLastName }))
+    dispatch(updateProfile({ firstName: updatedFirstName, lastName: updatedLastName }))
     pushToast({ status: 'success', message: 'Your profile has been updated!' })
     reset(defaultValues)
   }
@@ -66,10 +61,10 @@ export const Account = () => {
     }
   }
 
-  const renderField = (type: string, name: keyof FormValues, validation: RegisterOptions) => (
+  const renderField = (type: string, label: string, name: keyof FormValues, validation: RegisterOptions) => (
     <Field
       type={type as 'text'}
-      label={name.split(/(?=[A-Z])/).join(' ')}
+      label={label}
       {...register(name, validation)}
       disabled={isSubmitting}
       error={errors[name]?.message}
@@ -79,22 +74,17 @@ export const Account = () => {
   return (
     <main className={styles.account}>
       <div className={styles.content}>
-        <section className={styles.section}>
-          <h2>Personal Information</h2>
+        <AccountSection title='Personal Information'>
           <form onSubmit={handleSubmit(onSubmit)} noValidate className={styles.form}>
-            {renderField('text', 'firstName', validationRules.firstName)}
-            {renderField('text', 'lastName', validationRules.lastName)}
-            <Field label='Email' type='email' value={email || ''} disabled />
+            {renderField('text', 'First Name', 'newFirstName', validationRules.firstName)}
+            {renderField('text', 'Last Name', 'newLastName', validationRules.lastName)}
+            <Field label='Email' type='email' value={email} disabled />
             <Button variant='secondary' type='submit' disabled={isSubmitting}>
               {isSubmitting ? 'Submitting...' : 'Submit'}
             </Button>
           </form>
-        </section>
-        <section className={styles.section}>
-          <h2>Security</h2>
-          <Alert icon='lock' variant='danger'>
-            Password update is not available yet.
-          </Alert>
+        </AccountSection>
+        <AccountSection title='Security' notAvailable>
           <form className={styles.form}>
             <Field label='Password' type='text' disabled />
             <Field label='Confirm Password' type='text' disabled />
@@ -102,33 +92,14 @@ export const Account = () => {
               Update Password
             </Button>
           </form>
-        </section>
-        <section className={styles.section}>
-          <h2>Danger zone</h2>
-          <Alert icon='lock' variant='danger'>
-            Delete account is not available yet.
-          </Alert>
+        </AccountSection>
+        <AccountSection title='Danger Zone' notAvailable>
           <Button variant='danger' disabled>
             Delete Account
           </Button>
-        </section>
+        </AccountSection>
       </div>
-      <aside className={styles.infos}>
-        <ul className={styles.list}>
-          <li>
-            <h3>Account ID:</h3>
-            <span>{id}</span>
-          </li>
-          <li>
-            <h3>Created At:</h3>
-            <span>{formatString.date(createdAt as string)}</span>
-          </li>
-          <li>
-            <h3>Last Update:</h3>
-            <span>{formatString.date(updatedAt as string)}</span>
-          </li>
-        </ul>
-      </aside>
+      <AccountInfos />
     </main>
   )
 }
