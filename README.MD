@@ -1,5 +1,7 @@
 # Argent Bank - Frontend
 
+![p13-preview](https://github.com/alexperronnet/openclassrooms-p13-argent-bank/assets/59840413/3702a491-e0ad-44d4-af95-32695f1d4817)
+
 ## Table of contents
 
 - [Argent Bank - Frontend](#argent-bank---frontend)
@@ -121,6 +123,8 @@ This project is currently in **phase 1** of 2. This means that the following fea
 To get more informations about the backend installation, please refer to the [backend repository](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API).
 
 > If you are a Mac user, you may need to following this [issue](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API/issues/19) to install the backend.
+
+If everything is working, the backend should be available at [http://localhost:3001/](http://localhost:3001/) and the Swagger documentation at [http://localhost:3001/api-docs/](http://localhost:3001/api-docs/).
 
 ## License
 
