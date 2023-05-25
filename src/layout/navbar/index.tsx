@@ -11,9 +11,12 @@ import styles from './styles.module.scss'
 
 export const Navbar = () => {
   const navigate = useNavigate()
+
+  // Store
   const dispatch = useAppDispatch()
   const { isAuthenticated } = useAppSelector(state => state.auth)
   const { firstName } = useAppSelector(state => state.profile.infos) || {}
+
   const { pushToast } = useToast()
 
   const handleLogout = () => {

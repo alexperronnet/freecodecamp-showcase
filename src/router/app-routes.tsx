@@ -7,6 +7,7 @@ import { useAppSelector } from '@/store'
 import { PrivateRoute } from './private-route'
 
 export const AppRoutes = () => {
+  // Store
   const { isAuthenticated } = useAppSelector(state => state.auth)
 
   const routes: RouteObject[] = [
@@ -21,6 +22,7 @@ export const AppRoutes = () => {
           path: 'auth',
           element: <Pages.Auth />
         },
+        // Private routes are nested in a PrivateRoute component
         {
           element: <PrivateRoute />,
           children: [

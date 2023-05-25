@@ -15,6 +15,7 @@ type ToastContextType = {
   removeToast: (id: string) => void
 }
 
+// Variants for animating the toast
 const toastVariants = {
   initial: { opacity: 0, y: -50 },
   animate: { opacity: 1, y: 0 }
@@ -22,6 +23,7 @@ const toastVariants = {
 
 export const ToastContext = createContext<ToastContextType | undefined>(undefined)
 
+// The ToastProvider is responsible for creating and removing toasts
 export const ToastProvider = ({ children }: PropsWithChildren) => {
   const [toasts, setToasts] = useState<Toast[]>([])
 
@@ -33,11 +35,13 @@ export const ToastProvider = ({ children }: PropsWithChildren) => {
     toastMessage => {
       const id = nanoid()
 
+      // Remove the toast if it already exists and add it to the end of the array
       setToasts(toasts => {
         const filteredToasts = toasts.filter(toast => toast.message !== toastMessage.message)
         return [...filteredToasts, { id, ...toastMessage }]
       })
 
+      // Remove the toast after 5 seconds
       setTimeout(() => removeToast(id), 5000)
     },
     [removeToast]

@@ -3,14 +3,14 @@
   flex-direction: column;
   gap: 0.5rem;
   align-items: center;
+  font-size: v.$fs-2xl;
 }
 
 .welcome {
-  font-size: v.$fs-2xl;
   font-weight: v.$fw-bold;
+  text-transform: uppercase;
 }
 
 .user {
-  font-size: v.$fs-xl;
   font-weight: v.$fw-medium;
 }

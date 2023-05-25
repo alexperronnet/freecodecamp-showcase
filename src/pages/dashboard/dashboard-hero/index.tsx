@@ -3,6 +3,7 @@ import { useAppSelector } from '@/store'
 import styles from './styles.module.scss'
 
 export const DashboardHero = () => {
+  // Store
   const { firstName, lastName } = useAppSelector(state => state.profile.infos) || {}
 
   return (

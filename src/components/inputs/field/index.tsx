@@ -13,11 +13,14 @@ type FieldProperties = InputHTMLAttributes<HTMLInputElement> & {
 
 const cn = classNames.bind(styles)
 
+// ! The forwardRef is important for work properly with React Hook Form!!
 export const Field = forwardRef<HTMLInputElement, FieldProperties>(
   ({ label, type, error, ...properties }, reference) => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
-    const togglePasswordVisibility = () => setIsPasswordVisible(!isPasswordVisible)
+    const togglePasswordVisibility = () => {
+      setIsPasswordVisible(!isPasswordVisible)
+    }
 
     const inputType = type === 'password' && isPasswordVisible ? 'text' : type
 

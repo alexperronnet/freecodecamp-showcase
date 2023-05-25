@@ -23,11 +23,13 @@ export const Auth = () => {
 
   useSeo({ page: mode === 'login' ? 'Login' : 'Register' })
 
+  // Store
   const dispatch = useAppDispatch()
   const { isAuthenticated, error } = useAppSelector(state => state.auth)
 
   const { pushToast } = useToast()
 
+  // Set the mode in the URL
   useEffect(() => {
     if (mode !== 'login' && mode !== 'register') {
       setMode('login')
@@ -52,12 +54,14 @@ export const Auth = () => {
 
   const handleSwitchMode = () => {
     setMode(previousMode => (previousMode === 'login' ? 'register' : 'login'))
+    // Reset the auth state on mode switch
     dispatch(resetAuth())
   }
 
   const onSubmit = (data: AuthFormValues) => {
     const { firstName, lastName, email, password, persist } = data
 
+    // We need to format the new values for consistency with the API
     const newFirstName = formatString.name(firstName)
     const newLastName = formatString.name(lastName)
 

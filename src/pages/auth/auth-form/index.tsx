@@ -40,6 +40,7 @@ export const AuthForm = ({ mode, onSubmit }: FormProperties) => {
 
   const isRegistering = mode === 'register'
 
+  // We need to reset the form when the mode changes
   useEffect(() => {
     reset(defaultValues)
   }, [mode, reset])

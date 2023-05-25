@@ -5,6 +5,7 @@ type SeoProperties = {
   page: string
 }
 
+// Create or update a meta tag
 const createMetaTag = (name: string, value: string, property?: string) => {
   let metaTag = document.querySelector(`meta[${property || 'name'}="${name}"]`) as HTMLMetaElement
 
@@ -17,6 +18,7 @@ const createMetaTag = (name: string, value: string, property?: string) => {
   metaTag.content = value
 }
 
+// Custom hook to update the SEO
 export const useSeo = ({ page }: SeoProperties) => {
   const { pathname } = useLocation()
   const title = `Argent Bank — ${page}`

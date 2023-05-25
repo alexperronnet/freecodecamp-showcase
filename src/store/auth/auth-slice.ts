@@ -26,16 +26,19 @@ const authSlice = createSlice({
   },
   extraReducers: builder => {
     builder
+      // Handle pending actions
       .addMatcher(isAnyOf(loginUser.pending, registerUser.pending), state => {
         state.isAuthenticated = false
         state.status = 'loading'
         state.error = undefined
       })
+      // Handle fulfilled actions
       .addMatcher(isAnyOf(loginUser.fulfilled, registerUser.fulfilled), state => {
         state.isAuthenticated = true
         state.status = 'succeeded'
         state.error = undefined
       })
+      // Handle rejected actions
       .addMatcher(
         isAnyOf(loginUser.rejected, registerUser.rejected),
         (state, action: PayloadAction<string | undefined>) => {

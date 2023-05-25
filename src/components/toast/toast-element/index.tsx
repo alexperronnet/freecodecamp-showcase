@@ -1,3 +1,5 @@
+// ? Refer to src/contexts/toast-context.tsx for more information
+
 import classNames from 'classnames/bind'
 
 import { Icon } from '@/components'

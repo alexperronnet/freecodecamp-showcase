@@ -9,6 +9,7 @@ export const App = () => {
   const [checkingAuth, setCheckingAuth] = useState(true)
   const dispatch = useAppDispatch()
 
+  // Check if the user is authenticated on app load
   useEffect(() => {
     const token = tokenStorage.get()
 

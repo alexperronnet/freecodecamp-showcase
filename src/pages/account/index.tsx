@@ -24,19 +24,21 @@ export const Account = () => {
 
   const { pushToast } = useToast()
 
+  // Store
   const dispatch = useAppDispatch()
   const { firstName = '', lastName = '', email = '' } = useAppSelector(state => state.profile.infos) || {}
 
   const { register, handleSubmit, formState, reset } = useForm<FormValues>({ mode: 'onTouched', defaultValues })
-
   const { errors, isSubmitting } = formState
 
   const onSubmit = (data: FormValues) => {
     const { newFirstName, newLastName } = data
 
+    // We need to format the new values for consistency with the API
     const formattedNewFirstName = formatString.name(newFirstName)
     const formattedNewLastName = formatString.name(newLastName)
 
+    // Check if the new values are different from the old ones
     const isFirstNameUnchanged = !formattedNewFirstName || formattedNewFirstName === firstName
     const isLastNameUnchanged = !formattedNewLastName || formattedNewLastName === lastName
 
@@ -44,6 +46,7 @@ export const Account = () => {
       return pushToast({ status: 'error', message: 'No changes were made!' })
     }
 
+    // We update the new values only if they are different from the old ones (empty = unchanged)
     const updatedFirstName = isFirstNameUnchanged ? firstName : formattedNewFirstName
     const updatedLastName = isLastNameUnchanged ? lastName : formattedNewLastName
 

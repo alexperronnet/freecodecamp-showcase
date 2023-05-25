@@ -16,6 +16,7 @@ export const apiInstance = axios.create({
   }
 })
 
+// Add a request interceptor to add the token to the request headers
 apiInstance.interceptors.request.use(
   (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
     const token = tokenStorage.get()

@@ -10,6 +10,7 @@ type Account = {
   description: string
 }
 
+// ! This is just a mock data
 const accounts: Account[] = [
   {
     number: 8349,

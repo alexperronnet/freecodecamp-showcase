@@ -21,11 +21,13 @@ const profileSlice = createSlice({
   },
   extraReducers: builder => {
     builder
+      // Handle pending actions
       .addMatcher(isAnyOf(fetchProfile.pending, updateProfile.pending), state => {
         state.infos = undefined
         state.status = 'loading'
         state.error = undefined
       })
+      // Handle fulfilled actions
       .addMatcher(
         isAnyOf(fetchProfile.fulfilled, updateProfile.fulfilled),
         (state, action: PayloadAction<ProfileResponse>) => {
@@ -34,6 +36,7 @@ const profileSlice = createSlice({
           state.error = undefined
         }
       )
+      // Handle rejected actions
       .addMatcher(
         isAnyOf(fetchProfile.rejected, updateProfile.rejected),
         (state, action: PayloadAction<string | undefined>) => {

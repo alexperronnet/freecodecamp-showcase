@@ -4,6 +4,7 @@ import { Navigate, Outlet, useLocation } from 'react-router-dom'
 import { useToast } from '@/hooks'
 import { useAppSelector } from '@/store'
 
+// This component is used to protect private routes from unauthenticated users
 export const PrivateRoute = () => {
   const location = useLocation()
   const { isAuthenticated } = useAppSelector(state => state.auth)

@@ -4,8 +4,10 @@ import { formatString } from '@/utils'
 import styles from './styles.module.scss'
 
 export const AccountInfos = () => {
+  // Store
   const { id, createdAt, updatedAt } = useAppSelector(state => state.profile.infos) || {}
 
+  // For a better UX, we format the dates
   const formattedCreatedAt = formatString.date(createdAt as string)
   const formattedUpdatedAt = formatString.date(updatedAt as string)
 

@@ -2,6 +2,7 @@ import { useContext } from 'react'
 
 import { ToastContext } from '@/contexts'
 
+// Custom hook to use the toast context
 export const useToast = () => {
   const context = useContext(ToastContext)
 

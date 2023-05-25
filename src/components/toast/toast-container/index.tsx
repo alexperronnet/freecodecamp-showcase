@@ -1,3 +1,5 @@
+// ? Refer to src/contexts/toast-context.tsx for more information
+
 import { PropsWithChildren } from 'react'
 
 import styles from './styles.module.scss'
