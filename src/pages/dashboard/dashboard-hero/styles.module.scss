@@ -1,12 +1,16 @@
 .title {
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
   align-items: center;
+}
+
+.welcome {
   font-size: v.$fs-2xl;
   font-weight: v.$fw-bold;
-  text-transform: capitalize;
+}
 
-  @include m.media-min(sm) {
-    font-size: v.$fs-3xl;
-  }
+.user {
+  font-size: v.$fs-xl;
+  font-weight: v.$fw-medium;
 }

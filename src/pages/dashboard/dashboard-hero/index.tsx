@@ -8,8 +8,8 @@ export const DashboardHero = () => {
   return (
     <header className={styles.hero}>
       <h2 className={styles.title}>
-        <span>Welcome Back</span>
-        <span>
+        <span className={styles.welcome}>Welcome Back</span>
+        <span className={styles.user}>
           {firstName} {lastName}
         </span>
       </h2>
