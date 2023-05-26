@@ -37,7 +37,7 @@ This project is currently in **phase 1** of 2. This means that the following fea
 - User can logout
 - User can see and edit his profile
 
-> For the phase 2, we have to deal with the "transactions" feature. Please refer to the [Swagger documentation](./doc/swagger.yaml) for a proposition of API endpoints to implement.
+> For the phase 2, we have to deal with the "transactions" feature. Please refer to the [Swagger documentation](./docs) for a proposition of API endpoints to implement.
 
 ## Prerequisites
 
