@@ -1,46 +1,70 @@
 # Bank Argent API Documentation (Enhanced)
 
-This document provides an in-depth overview of the enhancements and additions to the Swagger API documentation for the Bank Argent project. The [initial version](./swagger-base.yaml) was based on Swagger 2.0, and we've migrated to Swagger 3.0.0 (OpenAPI) for a more detailed, readable, and user-friendly documentation.
+This document provides an in-depth overview of the enhancements and additions to the Swagger API documentation for the Bank Argent project. The [initial version](./swagger-base.yaml) was based on Swagger 2.0, and we've migrated to OpenAPI 3.0 for a more detailed, readable, and user-friendly documentation.
 
 ## Major Changes
 
-### 1. API Versioning
+### API Versioning
 
 Previously, the `basePath` was used to define the API version (v1). Now, we've integrated the version into the server URL, providing a more RESTful approach to versioning.
 
-### 2. Security Definitions
+### Security Definitions
 
 We've transitioned from the `securityDefinitions` object to the more descriptive `securitySchemes` under the `components` section. The `BearerAuth` scheme replaces the previous `Bearer`, offering a clearer depiction of the authorization method.
 
-### 3. Request and Response Structure
+### Request and Response Structure
 
 The `parameters` and `produces` elements that originally defined the request and response structures have been replaced with the `requestBody` and `responses` objects. This change gives a more accurate depiction of API requests and responses.
 
-### 4. Schemas
+### Schemas
 
 We've enhanced the `definitions` section into `components/schemas`. The schemas now include `User`, `Login`, `ApiResponse`, `LoginResponse`, `UserProfile`, providing a better depiction of the data models used in the API.
 
 ## New Additions
 
-### 1. Transaction API
+### Transaction API
 
-We've introduced new transaction-related endpoints, providing developers with greater flexibility to manage transactions. The new endpoints are:
+The following new endpoints have been added to the API:
 
-- **Create Transaction:** POST `/user/transactions`. Allows users to create a new transaction. Users must provide necessary details such as source account, destination account, and transaction amount.
+#### GET /user/transactions
 
-- **Get Transaction:** GET `/user/transactions/{transactionId}`. Enables users to retrieve details of a specific transaction by transaction ID.
+This endpoint allows users to **fetch all transactions** or **transactions for a specific account**. There are four query parameters that can be used:
 
-- **Update Transaction:** PUT `/user/transactions/{transactionId}`. Users can update the details of a transaction, although restrictions may apply to maintain transaction integrity.
+- `accountId`: This optional query parameter allows the user to fetch transactions specific to an account.
+- `startDate` & `endDate`: These optional parameters can be used to filter transactions within a specific date range. They should be in the format YYYY-MM-DD.
+- `page` & `size`: These parameters are used for pagination. `page` specifies the page number and `size` specifies the number of records per page.
 
-- **Delete Transaction:** DELETE `/tuser/ransactions/{transactionId}`. Provides users with the ability to delete a transaction, given certain conditions are met.
+#### POST /user/transactions
 
-- **Get All Transactions:** GET `/user/transactions`. Users can retrieve a list of all transactions made.
+This endpoint is for **creating a new transaction**. The request body should contain the transaction details.
 
-- **Get Transactions by Account:** GET `/accounts/{accountId}/transactions`. Allows users to fetch all transactions linked to a specific account.
+#### GET /user/transactions/{transactionId}
 
-### 2. Schemas
+This endpoint **fetches details of a specific transaction**. The `transactionId` is a path parameter and is required to identify which transaction to fetch.
 
-In addition to enhancing existing schemas, we've added new schemas to `components/schemas` to support the transaction endpoints. The new schemas include `Transaction`, `TransactionList`, `Account`, and `AccountList`.
+#### PUT /user/transactions/{transactionId}
+
+This endpoint is for **updating a specific transaction**. The `transactionId` is a path parameter and is required. The request body should contain the updated transaction details.
+
+#### DELETE /user/transactions/{transactionId}
+
+This endpoint **deletes a specific transaction**. The `transactionId` is a path parameter and is required.
+
+### Transaction Schemas
+
+The new version of the API documentation also introduces new schemas related to transactions:
+
+#### TransactionRequest
+
+This schema is used when **creating** or **updating** a transaction. It includes the `accountId`, `type`, `amount`, and `date` of the transaction.
+
+#### TransactionResponse
+
+This schema is used when **returning transaction data** to the client. It includes the `id`, `accountId`, `type`, `amount`, and `date` of the transaction.
+
+#### TransactionListResponse
+
+This schema is used when **returning a list of transactions**. It includes an array of `transactions` and pagination details (`page`, `size`, `totalRecords`).
 
 ## Conclusion
 

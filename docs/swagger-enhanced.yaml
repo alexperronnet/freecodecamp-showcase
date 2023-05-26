@@ -63,13 +63,6 @@ paths:
         - User Module
       summary: User Profile API
       description: API for fetching a user profile
-      parameters:
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
-          schema:
-            type: string
       responses:
         '200':
           description: User profile retrieved successully
@@ -88,13 +81,6 @@ paths:
         - User Module
       summary: User Profile API
       description: API for updating a user profile
-      parameters:
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
-          schema:
-            type: string
       requestBody:
         description: Update user profile attributes
         required: true
@@ -149,12 +135,6 @@ paths:
           description: Number of records per page
           schema:
             type: integer
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
-          schema:
-            type: string
       responses:
         '200':
           description: Transactions fetched successfully
@@ -173,13 +153,6 @@ paths:
         - Transactions Module
       summary: Create a new transaction
       description: API for creating a new transaction
-      parameters:
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
-          schema:
-            type: string
       requestBody:
         description: New transaction details
         required: true
@@ -213,12 +186,6 @@ paths:
           required: true
           schema:
             type: string
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
-          schema:
-            type: string
       responses:
         '200':
           description: Transaction fetched successfully
@@ -243,12 +210,6 @@ paths:
         - in: path
           name: transactionId
           description: ID of the transaction to update
-          required: true
-          schema:
-            type: string
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
           required: true
           schema:
             type: string
@@ -286,12 +247,6 @@ paths:
           required: true
           schema:
             type: string
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
-          schema:
-            type: string
       responses:
         '204':
           description: Transaction deleted successfully
@@ -306,6 +261,7 @@ components:
     BearerAuth:
       type: http
       scheme: bearer
+      bearerFormat: JWT
   schemas:
     User:
       properties:
