@@ -39,7 +39,7 @@ export const Navbar = () => {
       <ul className={styles.menu}>
         {isAuthenticated ? (
           <Fragment>
-            <MenuItem icon='accountCircle' label={firstName || 'Account'} to='/account' />
+            <MenuItem icon='accountCircle' label={firstName || 'Settings'} to='/settings' />
             <MenuItem icon='logoutBox' label='Sign Out' type='logout' onClick={handleLogout} />
           </Fragment>
         ) : (

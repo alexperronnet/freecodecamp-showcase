@@ -5,8 +5,8 @@ import { useSeo, useToast } from '@/hooks'
 import { updateProfile, useAppDispatch, useAppSelector } from '@/store'
 import { formatString, regexValidation } from '@/utils'
 
-import { AccountInfos } from './account-infos'
-import { AccountSection } from './account-section'
+import { SettingsInfos } from './settings-infos'
+import { SettingsSection } from './settings-section'
 import styles from './styles.module.scss'
 
 type FormValues = {
@@ -19,8 +19,8 @@ const defaultValues = {
   newLastName: ''
 }
 
-export const Account = () => {
-  useSeo({ page: 'Account' })
+export const Settings = () => {
+  useSeo({ page: 'Settings' })
 
   const { pushToast } = useToast()
 
@@ -75,9 +75,9 @@ export const Account = () => {
   )
 
   return (
-    <main className={styles.account}>
+    <main className={styles.settings}>
       <div className={styles.content}>
-        <AccountSection title='Personal Information'>
+        <SettingsSection title='Personal Information'>
           <form onSubmit={handleSubmit(onSubmit)} noValidate className={styles.form}>
             {renderField('text', 'First Name', 'newFirstName', validationRules.firstName)}
             {renderField('text', 'Last Name', 'newLastName', validationRules.lastName)}
@@ -86,8 +86,8 @@ export const Account = () => {
               {isSubmitting ? 'Submitting...' : 'Submit'}
             </Button>
           </form>
-        </AccountSection>
-        <AccountSection title='Security' notAvailable>
+        </SettingsSection>
+        <SettingsSection title='Security' notAvailable>
           <form className={styles.form}>
             <Field label='Password' type='text' disabled />
             <Field label='Confirm Password' type='text' disabled />
@@ -95,14 +95,14 @@ export const Account = () => {
               Update Password
             </Button>
           </form>
-        </AccountSection>
-        <AccountSection title='Danger Zone' notAvailable>
+        </SettingsSection>
+        <SettingsSection title='Danger Zone' notAvailable>
           <Button variant='danger' disabled>
             Delete Account
           </Button>
-        </AccountSection>
+        </SettingsSection>
       </div>
-      <AccountInfos />
+      <SettingsInfos />
     </main>
   )
 }

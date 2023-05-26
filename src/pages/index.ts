@@ -1,5 +1,5 @@
 export { NotFound } from './404'
-export { Account } from './account'
 export { Auth } from './auth'
 export { Dashboard } from './dashboard'
 export { Home } from './home'
+export { Settings } from './settings'

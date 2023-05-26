@@ -4,12 +4,12 @@ import { Alert } from '@/components'
 
 import styles from './styles.module.scss'
 
-type SectionProperties = PropsWithChildren & {
+type SettingsSectionProperties = PropsWithChildren & {
   title: string
   notAvailable?: boolean
 }
 
-export const AccountSection = ({ title, notAvailable, children }: SectionProperties) => (
+export const SettingsSection = ({ title, notAvailable, children }: SettingsSectionProperties) => (
   <section className={styles.section}>
     <h2 className={styles.title}>{title}</h2>
     {notAvailable && (

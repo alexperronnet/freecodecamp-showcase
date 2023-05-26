@@ -31,8 +31,8 @@ export const AppRoutes = () => {
               element: <Pages.Dashboard />
             },
             {
-              path: 'account',
-              element: <Pages.Account />
+              path: 'settings',
+              element: <Pages.Settings />
             }
           ]
         },
