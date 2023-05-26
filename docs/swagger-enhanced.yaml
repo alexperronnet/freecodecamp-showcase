@@ -58,7 +58,7 @@ paths:
         '500':
           description: Internal Server Error
   /user/profile:
-    get: # ! Use GET instead of POST for consistency and convention
+    post:
       security:
         - Bearer: []
       tags:
@@ -70,7 +70,6 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
-          type: string # ! Fix structural error
       produces:
         - application/json
       responses:
@@ -94,7 +93,6 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
-          type: string # ! Fix structural error
         - in: body
           name: body
           description: Update user profile attributes
