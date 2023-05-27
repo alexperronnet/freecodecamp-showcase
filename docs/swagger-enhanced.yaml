@@ -219,7 +219,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TransactionRequest'
+              $ref: '#/components/schemas/TransactionUpdateRequest'
       responses:
         '200':
           description: Transaction updated successfully
@@ -233,23 +233,28 @@ paths:
           description: Transaction not found
         '500':
           description: Internal Server Error
-    delete:
+  /user/transactions/{transactionId}/reverse:
+    post:
       security:
         - BearerAuth: []
       tags:
         - Transactions Module
-      summary: Delete a transaction
-      description: API for deleting a specific transaction
+      summary: Reverse a transaction
+      description: API for reversing a specific transaction
       parameters:
         - in: path
           name: transactionId
-          description: ID of the transaction to delete
+          description: ID of the transaction to reverse
           required: true
           schema:
             type: string
       responses:
-        '204':
-          description: Transaction deleted successfully
+        '200':
+          description: Transaction reversed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
         '400':
           description: Invalid Fields
         '404':
@@ -317,10 +322,9 @@ components:
         accountId:
           type: string
           description: Account ID that the transaction belongs to
-        type:
+        transactionType:
           type: string
           description: Type of the transaction
-          enum: [checking, savings, credit]
         amount:
           type: number
           description: Amount of the transaction
@@ -328,6 +332,30 @@ components:
           type: string
           format: date-time
           description: Date of the transaction
+        category:
+          type: string
+          description: Category of the transaction
+        note:
+          type: string
+          description: Additional notes for the transaction
+        description:
+          type: string
+          description: Description of the transaction
+        balance:
+          type: number
+          description: Balance of the associated account after the transaction
+    TransactionUpdateRequest:
+      type: object
+      properties:
+        category:
+          type: string
+          description: Category of the transaction
+        note:
+          type: string
+          description: Additional notes for the transaction
+        description:
+          type: string
+          description: Description of the transaction
     TransactionResponse:
       type: object
       properties:
@@ -337,7 +365,7 @@ components:
         accountId:
           type: string
           description: Account ID that the transaction belongs to
-        type:
+        transactionType:
           type: string
           description: Type of the transaction
         amount:
@@ -347,13 +375,44 @@ components:
           type: string
           format: date-time
           description: Date of the transaction
+        category:
+          type: string
+          description: Category of the transaction
+        note:
+          type: string
+          description: Additional notes for the transaction
+        description:
+          type: string
+          description: Description of the transaction
+        balance:
+          type: number
+          description: Balance of the associated account after the transaction
+    TransactionListResponseItem:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Transaction ID
+        accountId:
+          type: string
+          description: Account ID that the transaction belongs to
+        amount:
+          type: number
+          description: Amount of the transaction
+        date:
+          type: string
+          format: date-time
+          description: Date of the transaction
+        description:
+          type: string
+          description: Description of the transaction
     TransactionListResponse:
       type: object
       properties:
         transactions:
           type: array
           items:
-            $ref: '#/components/schemas/TransactionResponse'
+            $ref: '#/components/schemas/TransactionListResponseItem'
         page:
           type: integer
           description: Current page number
