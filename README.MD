@@ -1,5 +1,9 @@
 # Argent Bank - Frontend
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1f1e1437-4fc5-4ae4-a233-da3656c6a663/deploy-status)](https://app.netlify.com/sites/openclassrooms-13-argent-bank/deploys)
+
+> **Disclaimer**: This repository houses a project undertaken as part of my "**JavaScript React Developer**" training program with [OpenClassrooms](https://openclassrooms.com/). Upon the conclusion of the program on **September 20th, 2023**, the project will no longer be updated or maintained.
+
 ![p13-preview](https://github.com/alexperronnet/openclassrooms-p13-argent-bank/assets/59840413/3702a491-e0ad-44d4-af95-32695f1d4817)
 
 ## Table of contents
@@ -25,7 +29,7 @@ For this project, we have to build a banking application called "Argent Bank". T
 
 ### Usefull links
 
-- [Live demo](https://argent-bank.alexperronnet.dev/)
+- [Live demo](https://openclassrooms-13-argent-bank.netlify.app)
 - [Backend repository](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API)
 
 ### Current state
@@ -80,13 +84,13 @@ This project is currently in **phase 1** of 2. This means that the following fea
 2. Clone the repository
 
    ```bash
-   git clone https://github.com/alexperronnet/openclassrooms-p13-argent-bank
+   git clone https://github.com/alexperronnet/openclassrooms-13-argent-bank
    ```
 
 3. Navigate to the project directory
 
    ```bash
-   cd openclassrooms-p13-argent-bank
+   cd openclassrooms-13-argent-bank
    ```
 
 4. Install the dependencies
@@ -105,18 +109,17 @@ This project is currently in **phase 1** of 2. This means that the following fea
 
 #### Available scripts
 
-| Script                   | Description                                  |
-| ------------------------ | -------------------------------------------- |
-| `pnpm run dev`           | Start the development server                 |
-| `pnpm run build`         | Build the project for production             |
-| `pnpm run preview`       | Preview the production build                 |
-| `pnpm run deploy`        | Deploy the production build to Deploy branch |
-| `pnpm run lint`          | Run the linter                               |
-| `pnpm run lint:fix`      | Run the linter and fix the errors            |
-| `pnpm run format`        | Run the formatter                            |
-| `pnpm run format:fix`    | Run the formatter and fix the errors         |
-| `pnpm run stylelint`     | Run the style linter                         |
-| `pnpm run stylelint:fix` | Run the style linter and fix the errors      |
+| Script                   | Description                             |
+| ------------------------ | --------------------------------------- |
+| `pnpm run dev`           | Start the development server            |
+| `pnpm run build`         | Build the project for production        |
+| `pnpm run preview`       | Preview the production build            |
+| `pnpm run lint`          | Run the linter                          |
+| `pnpm run lint:fix`      | Run the linter and fix the errors       |
+| `pnpm run format`        | Run the formatter                       |
+| `pnpm run format:fix`    | Run the formatter and fix the errors    |
+| `pnpm run stylelint`     | Run the style linter                    |
+| `pnpm run stylelint:fix` | Run the style linter and fix the errors |
 
 ### Backend
 
