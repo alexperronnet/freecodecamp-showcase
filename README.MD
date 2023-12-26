@@ -2,7 +2,8 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1f1e1437-4fc5-4ae4-a233-da3656c6a663/deploy-status)](https://app.netlify.com/sites/openclassrooms-13-argent-bank/deploys)
 
-> **Disclaimer**: This repository houses a project undertaken as part of my "**JavaScript React Developer**" training program with [OpenClassrooms](https://openclassrooms.com/). Upon the conclusion of the program on **September 20th, 2023**, the project will no longer be updated or maintained.
+> [!CAUTION]
+> This repository contains a project completed as part of my training at [OpenClassrooms](https://openclassrooms.com). Having successfully concluded the program, the project is now archived and is no longer maintained. Please note that the repository remains available for reference purposes only; some links or features may not work as expected.
 
 ![p13-preview](https://github.com/alexperronnet/openclassrooms-p13-argent-bank/assets/59840413/3702a491-e0ad-44d4-af95-32695f1d4817)
 
