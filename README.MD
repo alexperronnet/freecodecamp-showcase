@@ -1,9 +1,7 @@
 # Argent Bank - Frontend
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/1f1e1437-4fc5-4ae4-a233-da3656c6a663/deploy-status)](https://app.netlify.com/sites/openclassrooms-13-argent-bank/deploys)
-
 > [!CAUTION]
-> This repository contains a project completed as part of my training at [OpenClassrooms](https://openclassrooms.com). Having successfully concluded the program, the project is now archived and is no longer maintained. Please note that the repository remains available for reference purposes only; some links or features may not work as expected.
+> This repository hosts a project completed as part of my [OpenClassrooms](https://openclassrooms.com) training program. Having successfully completed the program, the project has now been archived and will no longer be actively maintained. Please be aware that while the repository will remain accessible for reference, some links or features may no longer function as intended.
 
 ![p13-preview](https://github.com/alexperronnet/openclassrooms-p13-argent-bank/assets/59840413/3702a491-e0ad-44d4-af95-32695f1d4817)
 
